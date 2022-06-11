@@ -1,0 +1,3 @@
+<example product> <997> <GBP> <example@email> <N> <Ben> <Corey>
+<product name> <price> <currency> <customer email> <number purchased> <salesman 1> <salesman 2> ...
+"Product 1" 997 GBP customer@example.com 5 "Ben Hur" "Corey Feldman"
