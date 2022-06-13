@@ -34,3 +34,11 @@ def parse_sale(sale):
         sale_record["seller"].append(item.group().strip('<>'))
     
     return sale_record
+
+
+def parse_sales_list(sales):
+    sales_list = []
+    sale_records = split_sales(sales)
+    for sale in sale_records:
+        sales_list.append(parse_sale(sale))
+    return sales_list
