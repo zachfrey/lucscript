@@ -5,24 +5,27 @@ import re
 
 
 # Read all lines from the sales file
-def readsales(fname):
+def read_sales(fname):
     file = open(fname)
     sales = file.readlines()
     file.close()
     return sales
 
 # Split into individual sales records by comma
-def splitsales(line):
+# NOTE: using split() means we cannot have data files containing ','
+#       or input will break. If this is not an acceptible limitation,
+#       this function will have to take <> delimiters into account.
+def split_sales(line):
     return line.split(",")
 
 # Parse a single sales record into a Dictionary
-def parsesale(sale):
+def parse_sale(sale):
     sale_tokens = sale.split()
-    # TODO: put into Dictionary
+    # TODO: nicer error handling
     sale_record = { }
     search_results = re.finditer(r'\<.*?\>', sale)
     sale_record["product"]  = next(search_results).group().strip('<>')
-    sale_record["price"]    = int(next(search_results).group().strip('<>'))
+    sale_record["price"]    = float(next(search_results).group().strip('<>'))
     sale_record["currency"] = next(search_results).group().strip('<>')
     sale_record["email"]    = next(search_results).group().strip('<>')
     sale_record["bonus"]    = next(search_results).group().strip('<>')
