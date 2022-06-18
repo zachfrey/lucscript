@@ -1,18 +1,13 @@
 from re import L
 from readsales import *
+from sales_testdata import *
 
 def test_readsales():
     sales = read_sales("example.csv");
     assert(sales is not None)
     assert(isinstance(sales, list))
 
-sale1 = "<WR> <4056> <GBP> <joker@gmail.com> <N> <Ben> <Corey>"
-sale2 = "<HU2> <49> <USD> <hustler@foobar.edu> <N> <Alex>"
-sale3 = "<WR> <4997> <USD> <hustler@foobar.edu> <N> <Alex>"
-sale4 = "<HU2> <49> <USD> <example@email.com> <N> <Ben>"
-sale5 = "<HU2> <39.80> <GBP> <example@email.uk> <N> <Alex>"
 
-sales = sale1 + "," + sale2 + "," + sale3 + "," + sale4 + "," + sale5
 
 def test_parse_sale():
     sale = parse_sale(sale1)
@@ -36,6 +31,6 @@ def test_parse_sale():
 def test_parse_sales_list():
     sales_list = parse_sales_list(sales)
     assert len(sales_list) == 5
-    # TODO: check content
+    # TODO: check more content
     assert sales_list[0]["product"] == "WR"
     assert sales_list[4]["email"] == "example@email.uk"
