@@ -1,10 +1,9 @@
 
 
+# TODO: Must account for bonuses!
+
 # Given a list of sales, return a Dict of sales amounts
 # indexed by salesperson name
-
-from locale import currency
-
 
 def add_sales(sales):
     sales_by_person = dict()
@@ -22,6 +21,8 @@ def add_sales(sales):
             sales_by_person[seller][currency] += price
     return sales_by_person
 
+# Total sales with conversion to base currency (USD)
+
 def total_sales(sales, currency_table):
     totals = dict()
 
@@ -32,3 +33,9 @@ def total_sales(sales, currency_table):
             totals[seller] += float(sales[seller][currency]) * float(currency_table[currency])
     
     return totals
+
+def calculate_commissions(sales, commission_rates):
+    commissions = dict()
+    for seller in sales:
+        commissions[seller] = float(sales[seller]) * float(commission_rates[seller])
+    return commissions

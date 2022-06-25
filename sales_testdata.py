@@ -9,3 +9,7 @@ sales = sale1 + "," + sale2 + "," + sale3 + "," + sale4 + "," + sale5
 currency_table_keys = ["USD", "GBP"]
 currency_table_values = [1.0, 1.22]
 test_currency_table = dict(zip(currency_table_keys, currency_table_values))
+
+commissions_keys = ["Alex", "Ben", "Corey"]
+commissions_values = [0.05, 0.04, 0.06]
+test_commissions = dict(zip(commissions_keys, commissions_values))
