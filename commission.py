@@ -25,19 +25,10 @@ def add_sales(sales):
 def total_sales(sales, currency_table):
     totals = dict()
 
-    ## Ben's sales: 2028 GBP + 49 USD
-    #assert sales["Ben"]["GBP"] == 2028
-    #assert sales["Ben"]["USD"] == 49
-
     for seller in sales:
-        print("seller: " + seller)
         totals[seller] = float(0.0)
         
-        #print(totals)
-        for sale in sales[seller]:
-            print(sale)
-            print(sales[seller][sale])
-            #for currency in sale:
-                #print(currency)
-                #totals[seller] += seller[currency] * currency_table[currency]
+        for currency in sales[seller]:
+            totals[seller] += float(sales[seller][currency]) * float(currency_table[currency])
+    
     return totals

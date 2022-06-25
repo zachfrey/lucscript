@@ -34,6 +34,9 @@ def test_total_sales():
     currency_table = sales_testdata.test_currency_table
     
     totals = total_sales(sales, currency_table)
-    
+
+    # Ben's sales: 2028 GBP + 49 USD = 2,523.16 USD
+    assert totals["Ben"] == 2523.16
+
     # Corey's sales: 2028 GBP * 1.22 conversion = 2,474.16 USD
     assert totals["Corey"] == 2474.16
