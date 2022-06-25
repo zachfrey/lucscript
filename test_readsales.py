@@ -8,14 +8,13 @@ def test_readsales():
     assert(isinstance(sales, list))
 
 
-
 def test_parse_sale():
     sale = parse_sale(sale1)
     assert(sale["product"] == "WR")
     assert(sale["price"] == 4056)
     assert(sale["currency"] == "GBP")
     assert(sale["email"] == "joker@gmail.com")
-    assert(sale["bonus"] == "N")
+    assert(sale["bonus"] == "E")
     assert(sale["seller"][0] == "Ben")
     assert(sale["seller"][1] == "Corey")
 
