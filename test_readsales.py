@@ -1,4 +1,3 @@
-from re import L
 from readsales import *
 from sales_testdata import *
 

@@ -4,49 +4,6 @@ from readsales import parse_sales_list
 import sales_testdata
 
 
-def test_add_sales():
-    sales_list = parse_sales_list(sales_testdata.sales)
-    sales = add_sales(sales_list)
-
-    # Ben's sales: 2028 GBP + 49 USD
-    assert sales["Ben"]["GBP"] == 2028
-    assert sales["Ben"]["USD"] == 49
-
-    # Corey's sales: 2028 GBP
-    assert sales["Corey"]["GBP"] == 2028
-
-    # Alex's sales: 39.8 GBP + 5046 USD
-    assert sales["Alex"]["GBP"] == 39.8
-    assert sales["Alex"]["USD"] == 5046
-
-
-def test_total_sales():
-    sales_list = parse_sales_list(sales_testdata.sales)
-    sales = add_sales(sales_list)
-
-    currency_table = sales_testdata.test_currency_table
-    
-    totals = total_sales(sales, currency_table)
-    # Alex's sales: 39.8 GBP + 5046 USD = 5,094.556 USD
-    assert totals["Alex"] == 5094.556
-
-    # Ben's sales: 2028 GBP + 49 USD = 2,523.16 USD
-    assert totals["Ben"] == 2523.16
-
-    # Corey's sales: 2028 GBP * 1.22 conversion = 2,474.16 USD
-    assert totals["Corey"] == 2474.16
-
-def test_sales_commissions():
-    test_keys = ["Alex", "Ben", "Corey"]
-    test_values = [5000, 6000, 0]
-    sales = dict(zip(test_keys, test_values))
-
-    commissions = calculate_commissions(sales, sales_testdata.test_commissions)
-
-    assert commissions["Alex"] == 250.0
-    assert commissions["Ben"] == 240.0
-    assert commissions["Corey"] == 0.0
-
 def test_sales_commissions2():
     sales_list = parse_sales_list(sales_testdata.sales)
 
