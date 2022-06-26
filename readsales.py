@@ -11,6 +11,7 @@ def read_sales(fname):
     file.close()
     return sales
 
+
 # Split into individual sales records by comma
 # NOTE: using split() means we cannot have data files containing ','
 #       or input will break. If this is not an acceptible limitation,
@@ -18,21 +19,22 @@ def read_sales(fname):
 def split_sales(line):
     return line.split(",")
 
+
 # Parse a single sales record into a Dictionary
 def parse_sale(sale):
     sale_tokens = sale.split()
     # TODO: nicer error handling
-    sale_record = { }
+    sale_record = {}
     search_results = re.finditer(r'\<.*?\>', sale)
-    sale_record["product"]  = next(search_results).group().strip('<>')
-    sale_record["price"]    = float(next(search_results).group().strip('<>'))
+    sale_record["product"] = next(search_results).group().strip('<>')
+    sale_record["price"] = float(next(search_results).group().strip('<>'))
     sale_record["currency"] = next(search_results).group().strip('<>')
-    sale_record["email"]    = next(search_results).group().strip('<>')
-    sale_record["bonus"]    = next(search_results).group().strip('<>')
-    sale_record["seller"]   = []
+    sale_record["email"] = next(search_results).group().strip('<>')
+    sale_record["bonus"] = next(search_results).group().strip('<>')
+    sale_record["seller"] = []
     for item in search_results:
         sale_record["seller"].append(item.group().strip('<>'))
-    
+
     return sale_record
 
 

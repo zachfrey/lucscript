@@ -28,6 +28,6 @@ def test_sales_commissions2():
     assert commissions["Ben"] == 175.6412
 
     # Corey commission:
-    #   = (4056 GBP / 2) * 7% 
+    #   = (4056 GBP / 2) * 7%
     #   = 173.1912
     assert commissions["Corey"] == 173.1912
