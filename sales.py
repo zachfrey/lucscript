@@ -16,8 +16,9 @@ if __name__ == "__main__":
 
     sales_list = parse_sales_list(sales_file[0])
 
-    # TODO: read currency conversion
+    # read currency conversion
+    currency_table = read_currency_conversion(sys.argv[2])
 
-    commissions = calculate_commissions(sales_list, sales_testdata.test_currency_table, bonus_rates)
+    commissions = calculate_commissions(sales_list, currency_table, bonus_rates)
 
     print(commissions)

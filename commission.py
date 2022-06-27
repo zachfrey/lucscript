@@ -1,3 +1,5 @@
+from calendar import c
+import csv
 
 # Sales type determines commission rate:
 #
@@ -9,12 +11,17 @@ bonus_keys = ["N", "SG", "E"]
 bonus_values = [0.05, 0.10, 0.07]
 bonus_rates = dict(zip(bonus_keys, bonus_values))
 
-# Given a list of sales, return a Dict of sales amounts
-# indexed by salesperson name
+# Read all lines from the sales file
+def read_currency_conversion(fname):
+    currency_table = dict()
+    with open(fname) as csvfile:
+        reader = csv.reader(csvfile)
+        for row in reader:
+            currency_table[row[0]] = row[1]
+    return currency_table
 
-
-# Version 2 - calculate running commission total with bonus type
-#             & currency conversion
+# Calculate running commission total with bonus type
+#     & currency conversion
 # Returns - Dictionary indexed by name with commission total
 
 def calculate_commissions(sales, currencies, sales_types):

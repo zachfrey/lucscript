@@ -1,4 +1,3 @@
-
 # Return List of lines in the sales file
 
 import re
