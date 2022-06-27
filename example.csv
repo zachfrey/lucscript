@@ -1,3 +1,1 @@
-<example product> <997> <GBP> <example@email> <N> <Ben> <Corey>
-<product name> <price> <currency> <customer email> <number purchased> <salesman 1> <salesman 2> ...
-"Product 1" 997 GBP customer@example.com 5 "Ben Hur" "Corey Feldman"
+<WR> <4056> <GBP> <joker@gmail.com> <E> <Ben> <Corey>,<HU2> <49> <USD> <hustler@foobar.edu> <N> <Alex>,<WR> <4997> <USD> <hustler@foobar.edu> <SG> <Alex>,<HU2> <49> <USD> <example@email.com> <N> <Ben>,<HU2> <39.80> <GBP> <example@email.uk> <N> <Alex>

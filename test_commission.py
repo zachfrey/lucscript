@@ -9,7 +9,7 @@ def test_sales_commissions2():
 
     currency_table = sales_testdata.test_currency_table
 
-    commissions = add_sales2(sales_list, currency_table, bonus_rates)
+    commissions = calculate_commissions(sales_list, currency_table, bonus_rates)
 
     # sale1 = "<WR> <4056> <GBP> <joker@gmail.com> <E> <Ben> <Corey>"
     # sale2 = "<HU2> <49> <USD> <hustler@foobar.edu> <N> <Alex>"

@@ -17,7 +17,7 @@ bonus_rates = dict(zip(bonus_keys, bonus_values))
 #             & currency conversion
 # Returns - Dictionary indexed by name with commission total
 
-def add_sales2(sales, currencies, sales_types):
+def calculate_commissions(sales, currencies, sales_types):
     commissions = dict()
     for sale in sales:
         sellers = sale["seller"]
