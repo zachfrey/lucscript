@@ -11,6 +11,7 @@ bonus_keys = ["N", "SG", "E"]
 bonus_values = [0.05, 0.10, 0.07]
 bonus_rates = dict(zip(bonus_keys, bonus_values))
 
+
 # Read all lines from the sales file
 def read_currency_conversion(fname):
     currency_table = dict()
@@ -19,6 +20,7 @@ def read_currency_conversion(fname):
         for row in reader:
             currency_table[row[0]] = row[1]
     return currency_table
+
 
 # Calculate running commission total with bonus type
 #     & currency conversion
