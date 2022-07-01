@@ -1,5 +1,6 @@
 from commission import *
 from readsales import parse_sales_list
+import math
 
 import sales_testdata
 
@@ -18,16 +19,16 @@ def test_sales_commissions2():
     # sale5 = "<HU2> <39.80> <GBP> <example@email.uk> <N> <Alex>"
 
     # Alex commission:
-    #   = 49 USD * 5% + 4997 USD * 10% + 39.8 GBP (48.556 USD) * 5%
+    #   = 49 USD * 50% + 4997 USD * 10% + 39.8 GBP (48.556 USD) * 50%
     #   = 504.5778
-    assert commissions["Alex"] == 504.5778
+    assert math.isclose(commissions["Alex"], 548.478)
 
     # Ben commission:
-    #   = (4056 GBP / 2) * 7% + 49 USD * 5%
+    #   = (4056 GBP / 2) * 7% + 49 USD * 50%
     #   = 175.6412
-    assert commissions["Ben"] == 175.6412
+    assert math.isclose(commissions["Ben"], 197.6912)
 
     # Corey commission:
     #   = (4056 GBP / 2) * 7%
     #   = 173.1912
-    assert commissions["Corey"] == 173.1912
+    assert math.isclose(commissions["Corey"], 173.1912)

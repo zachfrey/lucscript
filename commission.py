@@ -34,7 +34,13 @@ def calculate_commissions(sales, currencies, sales_types):
         currency = sale["currency"]
         price = sale["price"] / num_sellers
         price2 = price * float(currencies[currency])
-        commission = price2 * sales_types[sale["bonus"]]
+
+        # Special case: commission for HU2 is always 50%
+
+        if sale["product"] == "HU2":
+            commission = price2 * 0.5
+        else:
+            commission = price2 * sales_types[sale["bonus"]]
         for seller in sellers:
             if seller not in commissions:
                 commissions[seller] = commission
