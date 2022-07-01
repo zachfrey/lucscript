@@ -31,8 +31,11 @@ def calculate_commissions(sales, currencies, sales_types):
     for sale in sales:
         sellers = sale["seller"]
         num_sellers = len(sellers)
-        currency = sale["currency"]
+        # Convert currency to uppercase so that case won't matter in the input file 
+        currency = sale["currency"].upper()
         price = sale["price"] / num_sellers
+        if currency not in currencies:
+            raise Exception(f"No currency conversion found for {currency}")
         price2 = price * float(currencies[currency])
 
         # Special case: commission for HU2 is always 50%
