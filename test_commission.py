@@ -1,5 +1,5 @@
 from commission import *
-from readsales import parse_sales_list
+from readsales import parse_sales_list, read_sales
 import math
 
 import sales_testdata
@@ -32,3 +32,32 @@ def test_sales_commissions2():
     #   = (4056 GBP / 2) * 7%
     #   = 173.1912
     assert math.isclose(commissions["Corey"], 173.1912)
+
+    # MJR commission
+    # line is bogus (data error) so should be 0
+    assert math.isclose(commissions["MJR"], 0.0)
+
+def test_test2_dataset():
+    sales = read_sales("Test2.csv")
+
+    sales_list = []
+    for line in sales:
+        sales_list += parse_sales_list(line)
+    
+    currencies = sales_testdata.test_currency_table
+
+    commissions = calculate_commissions(sales_list, currencies, bonus_rates)
+
+    # TODO: Start asserting here
+
+    # MJR commission:
+    #   = Line with WR commission is bogus, so only HU2 commission
+    #   = 28.5
+    assert math.isclose(commissions["MJR"], 24.5)
+
+    # Evo commission:
+    #   = 3 HU2 commissions = 24.5 * 3
+    assert math.isclose(commissions["Evo"], 73.5)
+
+    # Check for bogus sellers
+    assert "SG" not in commissions

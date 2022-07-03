@@ -10,11 +10,12 @@ sale2 = "<HU2> <49> <USD> <hustler@foobar.edu> <N> <Alex>"
 sale3 = "<WR> <4997> <USD> <hustler@foobar.edu> <SG> <Alex>"
 sale4 = "<HU2> <49> <USD> <example@email.com> <N> <Ben>"
 sale5 = "<HU2> <39.80> <GBP> <example@email.uk> <N> <Alex>"
+sale6 = "<WR full> <4147> <GBP> <N>  <Ashraf_ali_@live.co.uk> <MJR>🚨"
 
-sales = sale1 + "," + sale2 + "," + sale3 + "," + sale4 + "," + sale5
+sales = sale1 + "," + sale2 + "," + sale3 + "," + sale4 + "," + sale5 + "," + sale6
 
-currency_table_keys = ["USD", "GBP"]
-currency_table_values = [1.0, 1.22]
+currency_table_keys = ["USD", "GBP", "GPB", "BTC", "USDC", "USDT", "ETH"]
+currency_table_values = [1.0, 1.22, 1.22, 19216.00, 1.0, 1.0, 1048.68]
 test_currency_table = dict(zip(currency_table_keys, currency_table_values))
 
 commissions_keys = ["Alex", "Ben", "Corey"]

@@ -29,7 +29,18 @@ def test_parse_sale():
 
 def test_parse_sales_list():
     sales_list = parse_sales_list(sales)
-    assert len(sales_list) == 5
+    assert len(sales_list) == 6
     # TODO: check more content
     assert sales_list[0]["product"] == "WR"
+    assert sales_list[0]["seller"][0] == "Ben"
+    assert sales_list[0]["seller"][1] == "Corey"
+
     assert sales_list[4]["email"] == "example@email.uk"
+
+    # sale6 = "<WR full> <4147> <GBP> <N>  <Ashraf_ali_@live.co.uk> <MJR>🚨" 
+    assert sales_list[5]["product"] == "WR full"
+    assert sales_list[5]["currency"] == "GBP"
+    assert sales_list[5]["price"] == 4147
+    assert sales_list[5]["email"] == "N"
+    assert sales_list[5]["bonus"] == "Ashraf_ali_@live.co.uk"
+    assert sales_list[5]["seller"][0] == "MJR"
