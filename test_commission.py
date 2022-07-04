@@ -39,7 +39,7 @@ def test_sales_commissions2():
 
 
 def test_test2_dataset():
-    sales = read_sales("Test2.csv")
+    sales = read_sales("Test2-corrected.csv")
 
     sales_list = []
     for line in sales:
@@ -62,3 +62,19 @@ def test_test2_dataset():
 
     # Check for bogus sellers
     assert "SG" not in commissions
+    assert "E" not in commissions
+    assert "N" not in commissions
+
+    # Ahmad commission:
+    # = 1334 USDC * 5% = 66.70
+    assert math.isclose(commissions["Ahmad"], 66.70)
+
+    # OR commission
+    # <WR Final> <5159> <USDC> <Lucdeman@outlook.com> <N> <Ben> <SG> <OR>🚨
+    # = 5159 / 2 * 10% = 257.95
+    assert math.isclose(commissions["OR"], 257.95)
+
+    # Ben commission
+    # = 5159 / 2 * 5% + 4147GBP * 5% + 1056GBP * 5% + HU2 * 3
+    # = 519.858
+    assert math.isclose(commissions["Ben"], 519.858)
