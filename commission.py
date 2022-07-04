@@ -40,20 +40,20 @@ def calculate_commissions(sales, currencies, sales_types):
 
         # Special case: commission for HU2 is always 50%
 
-        if sale["product"] == "HU2":
-            commission = price2 * 0.5
-        else:
+        for seller in sellers:
             # Error check for bonus
-            sale_type = sale["bonus"]
+            sale_type = seller["bonus"]
             if sale_type not in sales_types:
                 print(f"Invalid bonus type: '{sale_type}', no commission")
                 commission = 0.0
             else:
-                commission = price2 * sales_types[sale_type]
-
-        for seller in sellers:
-            if seller not in commissions:
-                commissions[seller] = commission
+                # Special case: commission for HU2 is always 50%
+                if sale["product"] == "HU2":
+                    commission = price2 * 0.5
+                else:
+                    commission = price2 * sales_types[sale_type]
+            if seller["name"] not in commissions:
+                commissions[seller["name"]] = commission
             else:
-                commissions[seller] += commission
+                commissions[seller["name"]] += commission
     return commissions

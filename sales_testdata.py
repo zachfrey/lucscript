@@ -5,7 +5,7 @@
 # SG = Self generated = 10%
 # E  = Eli = 7%
 
-sale1 = "<WR> <4056> <GBP> <joker@gmail.com> <E> <Ben> <Corey>"
+sale1 = "<WR> <4056> <GBP> <joker@gmail.com> <E> <Ben> <E> <Corey>"
 sale2 = "<HU2> <49> <USD> <hustler@foobar.edu> <N> <Alex>"
 sale3 = "<WR> <4997> <USD> <hustler@foobar.edu> <SG> <Alex>"
 sale4 = "<HU2> <49> <USD> <example@email.com> <N> <Ben>"

@@ -29,10 +29,15 @@ def parse_sale(sale):
     sale_record["price"] = float(next(search_results).group().strip('<>'))
     sale_record["currency"] = next(search_results).group().strip('<>')
     sale_record["email"] = next(search_results).group().strip('<>')
-    sale_record["bonus"] = next(search_results).group().strip('<>')
     sale_record["seller"] = []
-    for item in search_results:
-        sale_record["seller"].append(item.group().strip('<>'))
+    while True:
+        try:
+            seller = {}
+            seller["bonus"] = next(search_results).group().strip('<>')
+            seller["name"] = next(search_results).group().strip('<>')
+            sale_record["seller"].append(seller)
+        except StopIteration:
+            break
 
     return sale_record
 
