@@ -37,13 +37,14 @@ def test_sales_commissions2():
     # line is bogus (data error) so should be 0
     assert math.isclose(commissions["MJR"], 0.0)
 
+
 def test_test2_dataset():
     sales = read_sales("Test2.csv")
 
     sales_list = []
     for line in sales:
         sales_list += parse_sales_list(line)
-    
+
     currencies = sales_testdata.test_currency_table
 
     commissions = calculate_commissions(sales_list, currencies, bonus_rates)

@@ -12,7 +12,8 @@ sale4 = "<HU2> <49> <USD> <example@email.com> <N> <Ben>"
 sale5 = "<HU2> <39.80> <GBP> <example@email.uk> <N> <Alex>"
 sale6 = "<WR full> <4147> <GBP> <N>  <Ashraf_ali_@live.co.uk> <MJR>🚨"
 
-sales = sale1 + "," + sale2 + "," + sale3 + "," + sale4 + "," + sale5 + "," + sale6
+sales = sale1 + "," + sale2 + "," + sale3 + ","
+sales = sales + sale4 + "," + sale5 + "," + sale6
 
 currency_table_keys = ["USD", "GBP", "GPB", "BTC", "USDC", "USDT", "ETH"]
 currency_table_values = [1.0, 1.22, 1.22, 19216.00, 1.0, 1.0, 1048.68]
