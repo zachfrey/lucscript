@@ -14,4 +14,7 @@ From Telegram:
 > Next I’ll need to run some equations to calculate the commission per sale \
 > For example, Corey has a base 5% commission \
 > But since Corey AND Ben made the sale
-Corey’s commission is split in 2 \
+> Corey’s commission is split in 2 \
+
+Special case: Commission for HU2 is always 50%
+
