@@ -22,8 +22,16 @@ if __name__ == "__main__":
     currencies = read_currency_conversion(sys.argv[2])
 
     # Do the math to compute everyone's commissions
-    commissions = calculate_commissions(sales_list, currencies, bonus_rates)
+    commissions = calculate_commissions2(sales_list, currencies, bonus_rates)
 
-    # Print out the results
-    for seller in commissions:
-        print(f"{seller}\t${round(commissions[seller],2)}")
+    # Write out the results
+
+    # Seller,Product,Price,Currency,Customer,Bonus,Splits,Conversion,Commission
+    fields = ['Seller', 'Product', 'Price', 'Currency',
+              'Customer', 'Bonus', 'Splits', 'Conversion', 'Commission']
+    filename = 'foo.csv'
+
+    with open(filename, 'w') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=fields)
+        writer.writeheader()
+        writer.writerows(commissions)
