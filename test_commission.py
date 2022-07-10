@@ -110,21 +110,13 @@ def test_sales_commissions2():
     assert commissions[n]["Conversion"] == 1.22
     assert math.isclose(commissions[n]["Commission"], 173.1912)
 
-    # Alex commission:
-    #   = 49 USD * 50% + 4997 USD * 10% + 39.8 GBP (48.556 USD) * 50%
-    #   = 504.5778
-    # assert math.isclose(commissions["Alex"], 548.478)
-
-    # Ben commission:
-    #   = (4056 GBP / 2) * 7% + 49 USD * 50%
-    #   = 175.6412
-    # assert math.isclose(commissions["Ben"], 197.6912)
-
-    # Corey commission:
-    #   = (4056 GBP / 2) * 7%
-    #   = 173.1912
-    # assert math.isclose(commissions["Corey"], 173.1912)
-
-    # MJR commission
-    # line is bogus (data error) so should be 0
-    # assert math.isclose(commissions["MJR"], 0.0)
+    n = 1
+    assert commissions[n]["Seller"] == "Corey"
+    assert commissions[n]["Product"] == "WR"
+    assert math.isclose(commissions[n]["Price"], 4056.0)
+    assert commissions[n]["Currency"] == "GBP"
+    assert commissions[n]["Customer"] == "joker@gmail.com"
+    assert commissions[n]["Bonus"] == "E"
+    assert commissions[n]["Splits"] == 2
+    assert commissions[n]["Conversion"] == 1.22
+    assert math.isclose(commissions[n]["Commission"], 173.1912)

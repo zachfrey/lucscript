@@ -65,7 +65,6 @@ def calculate_commissions(sales, currencies, sales_types):
 # Keys:Seller,Product,Price,Currency,Customer,Bonus,Splits,Conversion,Commission
 
 def calculate_commissions2(sales, currencies, sales_types):
-    commissions = dict()
     sale_list = []
 
     for sale in sales:
@@ -94,11 +93,6 @@ def calculate_commissions2(sales, currencies, sales_types):
                     commission = price2 * 0.5
                 else:
                     commission = price2 * sales_types[sale_type]
-            if seller["name"] not in commissions:
-                commissions[seller["name"]] = commission
-            else:
-                commissions[seller["name"]] += commission
-            # Seller,Product,Price,Currency,Customer,Bonus,Splits,Conversion,Commission
             newsale["Seller"] = seller["name"]
             newsale["Product"] = sale["product"]
             newsale["Price"] = sale["price"]
