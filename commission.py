@@ -107,7 +107,7 @@ def calculate_commissions2(sales, currencies, sales_types):
             newsale["Bonus"] = sale_type
             newsale["Splits"] = num_sellers
             newsale["Conversion"] = float(currencies[currency])
-            newsale["Commission"] = round(commission, 2)
+            newsale["Commission"] = commission
             sale_list.append(newsale)
 
     return sale_list

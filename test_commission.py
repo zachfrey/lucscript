@@ -108,7 +108,7 @@ def test_sales_commissions2():
     assert commissions[n]["Bonus"] == "E"
     assert commissions[n]["Splits"] == 2
     assert commissions[n]["Conversion"] == 1.22
-    assert math.isclose(commissions[n]["Commission"], 173.19)
+    assert math.isclose(commissions[n]["Commission"], 173.1912)
 
     # Alex commission:
     #   = 49 USD * 50% + 4997 USD * 10% + 39.8 GBP (48.556 USD) * 50%

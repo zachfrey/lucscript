@@ -9,8 +9,8 @@ from commission import *
 import sales_testdata
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print(f"usage: {sys.argv[0]} salesdata.csv currency.csv")
+    if len(sys.argv) < 4:
+        print(f"usage: {sys.argv[0]} salesdata.csv currency.csv output.csv")
         sys.exit(os.EX_USAGE)
     sales_file = read_sales(sys.argv[1])
 
@@ -29,9 +29,19 @@ if __name__ == "__main__":
     # Seller,Product,Price,Currency,Customer,Bonus,Splits,Conversion,Commission
     fields = ['Seller', 'Product', 'Price', 'Currency',
               'Customer', 'Bonus', 'Splits', 'Conversion', 'Commission']
-    filename = 'foo.csv'
+    filename = sys.argv[3]
 
     with open(filename, 'w') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=fields)
         writer.writeheader()
         writer.writerows(commissions)
+
+    # Print summary for crosscheck
+    total_sales = dict()
+    for sale in commissions:
+        if sale["Seller"] not in total_sales:
+            total_sales[sale["Seller"]] = sale["Commission"]
+        else:
+            total_sales[sale["Seller"]] += sale["Commission"]
+    for seller in total_sales:
+        print(f"{seller}\t${round(total_sales[seller],2)}")
