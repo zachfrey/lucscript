@@ -20,7 +20,7 @@ def test_parse_sale():
     assert(sale["seller"][1]["bonus"] == "E")
 
     sale = parse_sale(sale5)
-    assert(sale["product"] == "HU2")
+    assert(sale["product"] == "HU")
     assert(sale["price"] == 39.8)
     assert(sale["currency"] == "GBP")
     assert(sale["email"] == "example@email.uk")

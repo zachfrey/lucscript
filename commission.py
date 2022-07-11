@@ -48,7 +48,7 @@ def calculate_commissions(sales, currencies, sales_types):
                 commission = 0.0
             else:
                 # Special case: commission for HU2 is always 50%
-                if sale["product"][:3] == "HU2":
+                if sale["product"][:2] == "HU":
                     commission = price2 * 0.5
                 else:
                     commission = price2 * sales_types[sale_type]
@@ -78,8 +78,6 @@ def calculate_commissions2(sales, currencies, sales_types):
             raise Exception(f"No currency conversion found for '{currency}'")
         price2 = price * float(currencies[currency])
 
-        # Special case: commission for HU2 is always 50%
-
         for seller in sellers:
             newsale = dict()
             # Error check for bonus
@@ -89,8 +87,8 @@ def calculate_commissions2(sales, currencies, sales_types):
                 commission = 0.0
             else:
                 # Special case: commission for HU2 is always 50%
-                # Check beginning of string for HU2 to match
-                if sale["product"][:3] == "HU2":
+                # Check beginning of string for HU to match
+                if sale["product"][:2] == "HU":
                     commission = price2 * 0.5
                 else:
                     commission = price2 * sales_types[sale_type]

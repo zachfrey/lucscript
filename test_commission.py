@@ -133,7 +133,7 @@ def test_sales_commissions2():
     assert commissions[n]["Conversion"] == 1.0
     assert math.isclose(commissions[n]["Commission"], 24.5)
 
-    # Fourth sail - use HU2JAIL case
+    # Fourth sale - use HU2JAIL case
     # sale4 = "<HU2JAIL> <49> <USD> <example@email.com> <N> <Ben>"
     n = 4
     assert commissions[n]["Seller"] == "Ben"
@@ -145,3 +145,16 @@ def test_sales_commissions2():
     assert commissions[n]["Splits"] == 1
     assert commissions[n]["Conversion"] == 1.0
     assert math.isclose(commissions[n]["Commission"], 24.5)
+
+    # Fifth sale - check "HU" case
+    # sale5 = "<HU> <39.80> <GBP> <example@email.uk> <N> <Alex>"
+    n = 5
+    assert commissions[n]["Seller"] == "Alex"
+    assert commissions[n]["Product"] == "HU"
+    assert math.isclose(commissions[n]["Price"], 39.80)
+    assert commissions[n]["Currency"] == "GBP"
+    assert commissions[n]["Customer"] == "example@email.uk"
+    assert commissions[n]["Bonus"] == "N"
+    assert commissions[n]["Splits"] == 1
+    assert commissions[n]["Conversion"] == 1.22
+    assert math.isclose(commissions[n]["Commission"], 24.278)
