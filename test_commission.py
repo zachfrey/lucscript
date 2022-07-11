@@ -92,7 +92,7 @@ def test_sales_commissions2():
     # sale1 = "<WR> <4056> <GBP> <joker@gmail.com> <E> <Ben> <E> <Corey>"
     # sale2 = "<HU2> <49> <USD> <hustler@foobar.edu> <N> <Alex>"
     # sale3 = "<WR> <4997> <USD> <hustler@foobar.edu> <SG> <Alex>"
-    # sale4 = "<HU2> <49> <USD> <example@email.com> <N> <Ben>"
+    # sale4 = "<HU2JAIL> <49> <USD> <example@email.com> <N> <Ben>"
     # sale5 = "<HU2> <39.80> <GBP> <example@email.uk> <N> <Alex>"
     # sale6 = "<WR full> <4147> <GBP> <N>  <foobar@live.co.uk> <MJR>🚨"
 
@@ -120,3 +120,28 @@ def test_sales_commissions2():
     assert commissions[n]["Splits"] == 2
     assert commissions[n]["Conversion"] == 1.22
     assert math.isclose(commissions[n]["Commission"], 173.1912)
+
+    # Second sale - HU2
+    n = 2
+    assert commissions[n]["Seller"] == "Alex"
+    assert commissions[n]["Product"] == "HU2"
+    assert math.isclose(commissions[n]["Price"], 49.0)
+    assert commissions[n]["Currency"] == "USD"
+    assert commissions[n]["Customer"] == "hustler@foobar.edu"
+    assert commissions[n]["Bonus"] == "N"
+    assert commissions[n]["Splits"] == 1
+    assert commissions[n]["Conversion"] == 1.0
+    assert math.isclose(commissions[n]["Commission"], 24.5)
+
+    # Fourth sail - use HU2JAIL case
+    # sale4 = "<HU2JAIL> <49> <USD> <example@email.com> <N> <Ben>"
+    n = 4
+    assert commissions[n]["Seller"] == "Ben"
+    assert commissions[n]["Product"] == "HU2JAIL"
+    assert math.isclose(commissions[n]["Price"], 49.0)
+    assert commissions[n]["Currency"] == "USD"
+    assert commissions[n]["Customer"] == "example@email.com"
+    assert commissions[n]["Bonus"] == "N"
+    assert commissions[n]["Splits"] == 1
+    assert commissions[n]["Conversion"] == 1.0
+    assert math.isclose(commissions[n]["Commission"], 24.5)

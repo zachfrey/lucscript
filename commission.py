@@ -48,7 +48,7 @@ def calculate_commissions(sales, currencies, sales_types):
                 commission = 0.0
             else:
                 # Special case: commission for HU2 is always 50%
-                if sale["product"] == "HU2":
+                if sale["product"][:3] == "HU2":
                     commission = price2 * 0.5
                 else:
                     commission = price2 * sales_types[sale_type]
@@ -89,7 +89,8 @@ def calculate_commissions2(sales, currencies, sales_types):
                 commission = 0.0
             else:
                 # Special case: commission for HU2 is always 50%
-                if sale["product"] == "HU2":
+                # Check beginning of string for HU2 to match
+                if sale["product"][:3] == "HU2":
                     commission = price2 * 0.5
                 else:
                     commission = price2 * sales_types[sale_type]
