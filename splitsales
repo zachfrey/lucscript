@@ -4,5 +4,5 @@ names=`cut -f1 -d, $1 | sort | uniq`
 
 for name in $names
 do
-    grep $name $1 > $name.csv
+    grep "^$name," $1 > $name.csv
 done
