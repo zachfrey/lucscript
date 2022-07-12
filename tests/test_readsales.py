@@ -3,7 +3,7 @@ from sales_testdata import *
 
 
 def test_readsales():
-    sales = read_sales("example.csv")
+    sales = read_sales("tests/example.csv")
     assert(sales is not None)
     assert(isinstance(sales, list))
 

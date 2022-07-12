@@ -39,7 +39,7 @@ def test_sales_commissions():
 
 
 def test_test2_dataset():
-    sales = read_sales("Test2-corrected.csv")
+    sales = read_sales("tests/Test2-corrected.csv")
 
     sales_list = []
     for line in sales:
