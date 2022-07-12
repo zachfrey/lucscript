@@ -9,8 +9,8 @@ from commission import *
 import sales_testdata
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print(f"usage: {sys.argv[0]} salesdata.csv currency.csv")
+    if len(sys.argv) < 4:
+        print(f"usage: {sys.argv[0]} salesdata.csv currency.csv output.csv")
         sys.exit(os.EX_USAGE)
     sales_file = read_sales(sys.argv[1])
 
@@ -22,8 +22,26 @@ if __name__ == "__main__":
     currencies = read_currency_conversion(sys.argv[2])
 
     # Do the math to compute everyone's commissions
-    commissions = calculate_commissions(sales_list, currencies, bonus_rates)
+    commissions = calculate_commissions2(sales_list, currencies, bonus_rates)
 
-    # Print out the results
-    for seller in commissions:
-        print(f"{seller}\t${round(commissions[seller],2)}")
+    # Write out the results
+
+    # Seller,Product,Price,Currency,Customer,Bonus,Splits,Conversion,Commission
+    fields = ['Seller', 'Product', 'Price', 'Currency',
+              'Customer', 'Bonus', 'Splits', 'Conversion', 'Commission']
+    filename = sys.argv[3]
+
+    with open(filename, 'w') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=fields)
+        writer.writeheader()
+        writer.writerows(commissions)
+
+    # Print summary for crosscheck
+    total_sales = dict()
+    for sale in commissions:
+        if sale["Seller"] not in total_sales:
+            total_sales[sale["Seller"]] = sale["Commission"]
+        else:
+            total_sales[sale["Seller"]] += sale["Commission"]
+    for seller in total_sales:
+        print(f"{seller}\t${round(total_sales[seller],2)}")

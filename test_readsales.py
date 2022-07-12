@@ -20,7 +20,7 @@ def test_parse_sale():
     assert(sale["seller"][1]["bonus"] == "E")
 
     sale = parse_sale(sale5)
-    assert(sale["product"] == "HU2")
+    assert(sale["product"] == "HU")
     assert(sale["price"] == 39.8)
     assert(sale["currency"] == "GBP")
     assert(sale["email"] == "example@email.uk")
@@ -38,10 +38,10 @@ def test_parse_sales_list():
 
     assert sales_list[4]["email"] == "example@email.uk"
 
-    # sale6 = "<WR full> <4147> <GBP> <N>  <Ashraf_ali_@live.co.uk> <MJR>🚨"
+    # sale6 = "<WR full> <4147> <GBP> <N>  <foobar@live.co.uk> <MJR>🚨"
     assert sales_list[5]["product"] == "WR full"
     assert sales_list[5]["currency"] == "GBP"
     assert sales_list[5]["price"] == 4147
     assert sales_list[5]["email"] == "N"
-    assert sales_list[5]["seller"][0]["bonus"] == "Ashraf_ali_@live.co.uk"
+    assert sales_list[5]["seller"][0]["bonus"] == "foobar@live.co.uk"
     assert sales_list[5]["seller"][0]["name"] == "MJR"

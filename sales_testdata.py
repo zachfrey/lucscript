@@ -8,9 +8,9 @@
 sale1 = "<WR> <4056> <GBP> <joker@gmail.com> <E> <Ben> <E> <Corey>"
 sale2 = "<HU2> <49> <USD> <hustler@foobar.edu> <N> <Alex>"
 sale3 = "<WR> <4997> <USD> <hustler@foobar.edu> <SG> <Alex>"
-sale4 = "<HU2> <49> <USD> <example@email.com> <N> <Ben>"
-sale5 = "<HU2> <39.80> <GBP> <example@email.uk> <N> <Alex>"
-sale6 = "<WR full> <4147> <GBP> <N>  <Ashraf_ali_@live.co.uk> <MJR>🚨"
+sale4 = "<HU2JAIL> <49> <USD> <example@email.com> <N> <Ben>"
+sale5 = "<HU> <39.80> <GBP> <example@email.uk> <N> <Alex>"
+sale6 = "<WR full> <4147> <GBP> <N>  <foobar@live.co.uk> <MJR>🚨"
 
 sales = sale1 + "," + sale2 + "," + sale3 + ","
 sales = sales + sale4 + "," + sale5 + "," + sale6
