@@ -3,4 +3,4 @@ if [ "$#" -le 1 ]; then
     echo "Usage: $0 input.csv output.csv"
     exit 1
 fi
-sed -f eli.sed $1 > $2
+sed -e "/<Eli>/ s/<N>/<E>/" $1 > $2
