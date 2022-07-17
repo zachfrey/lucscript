@@ -30,12 +30,13 @@ def calculate_commissions(sales, currencies, sales_types):
     for sale in sales:
         sellers = sale["seller"]
         num_sellers = len(sellers)
+        line_number = sale["line_number"]
         # Convert currency to uppercase so that case won't matter
         # Strip leading and trailing whitespace, too
         currency = sale["currency"].strip().upper()
         price = sale["price"] / num_sellers
         if currency not in currencies:
-            raise Exception(f"No currency conversion found for '{currency}'")
+            raise Exception(f"Line {line_number}: No currency conversion found for '{currency}'")
         price2 = price * float(currencies[currency])
 
         # Special case: commission for HU2 is always 50%
@@ -44,7 +45,7 @@ def calculate_commissions(sales, currencies, sales_types):
             # Error check for bonus
             sale_type = seller["bonus"]
             if sale_type not in sales_types:
-                print(f"Invalid bonus type: '{sale_type}', no commission")
+                print(f"Line {line_number}: Invalid bonus type: '{sale_type}', no commission")
                 commission = 0.0
             else:
                 # Special case: commission for HU2 is always 50%
@@ -70,12 +71,13 @@ def calculate_commissions2(sales, currencies, sales_types):
     for sale in sales:
         sellers = sale["seller"]
         num_sellers = len(sellers)
+        line_number = sale["line_number"]
         # Convert currency to uppercase so that case won't matter
         # Strip leading and trailing whitespace, too
         currency = sale["currency"].strip().upper()
         price = sale["price"] / num_sellers
         if currency not in currencies:
-            raise Exception(f"No currency conversion found for '{currency}'")
+            raise Exception(f"Line {line_number}: No currency conversion found for '{currency}'")
         price2 = price * float(currencies[currency])
 
         for seller in sellers:
@@ -83,7 +85,7 @@ def calculate_commissions2(sales, currencies, sales_types):
             # Error check for bonus
             sale_type = seller["bonus"]
             if sale_type not in sales_types:
-                print(f"Invalid bonus type: '{sale_type}', no commission")
+                print(f"Line {line_number}: Invalid bonus type: '{sale_type}', no commission")
                 commission = 0.0
             else:
                 # Special case: commission for HU2 is always 50%

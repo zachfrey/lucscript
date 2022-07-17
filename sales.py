@@ -13,8 +13,10 @@ if __name__ == "__main__":
     sales_file = read_sales(sys.argv[1])
 
     sales_list = []
+    line_num = 0
     for line in sales_file:
-        sales_list += parse_sales_list(line)
+        line_num += 1
+        sales_list += parse_sales_list(line, line_num)
 
     # Read currency conversion rates (to $USD)
     currencies = read_currency_conversion(sys.argv[2])
