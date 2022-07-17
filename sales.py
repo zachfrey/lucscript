@@ -1,12 +1,10 @@
-#!/usr/bin/python3
+#!/usr/bin/python3 -B
 
 import sys
 import os
 
 from readsales import *
 from commission import *
-
-import sales_testdata
 
 if __name__ == "__main__":
     if len(sys.argv) < 4:
