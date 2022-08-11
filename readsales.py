@@ -20,11 +20,12 @@ def split_sales(line):
 
 
 # Parse a single sales record into a Dictionary
-def parse_sale(sale):
+def parse_sale(sale, line_num):
     sale_tokens = sale.split()
     # TODO: nicer error handling
     sale_record = {}
     search_results = re.finditer(r'\<.*?\>', sale)
+    sale_record["line_number"] = line_num
     sale_record["product"] = next(search_results).group().strip('<>')
     sale_record["price"] = float(next(search_results).group().strip('<>'))
     sale_record["currency"] = next(search_results).group().strip('<>')
@@ -42,9 +43,9 @@ def parse_sale(sale):
     return sale_record
 
 
-def parse_sales_list(sales):
+def parse_sales_list(sales, line_num):
     sales_list = []
     sale_records = split_sales(sales)
     for sale in sale_records:
-        sales_list.append(parse_sale(sale))
+        sales_list.append(parse_sale(sale, line_num))
     return sales_list

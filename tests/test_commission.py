@@ -6,7 +6,7 @@ import sales_testdata
 
 
 def test_sales_commissions():
-    sales_list = parse_sales_list(sales_testdata.sales)
+    sales_list = parse_sales_list(sales_testdata.sales, 1)
 
     currencies = sales_testdata.test_currency_table
 
@@ -39,11 +39,13 @@ def test_sales_commissions():
 
 
 def test_test2_dataset():
-    sales = read_sales("Test2-corrected.csv")
+    sales = read_sales("tests/Test2-corrected.csv")
 
     sales_list = []
+    line_number = 0
     for line in sales:
-        sales_list += parse_sales_list(line)
+        line_number += 1
+        sales_list += parse_sales_list(line, line_number)
 
     currencies = sales_testdata.test_currency_table
 
@@ -81,7 +83,7 @@ def test_test2_dataset():
 
 
 def test_sales_commissions2():
-    sales_list = parse_sales_list(sales_testdata.sales)
+    sales_list = parse_sales_list(sales_testdata.sales, 1)
 
     currencies = sales_testdata.test_currency_table
 
