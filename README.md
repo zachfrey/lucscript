@@ -1,27 +1,26 @@
 # lucscript
-Scripts for Luc
+Sales Commission Scripts for Luc
 
-From Telegram:
+1. Update the currency conversion file currency/currency.csv
 
-> So basically, I manage a sales team \
-> And every month I need to calculate their commissions \
-> Sometimes multiple salesmen contribute to the same sale \
-> &lt;example product&gt; &lt;997&gt; &lt;GBP&gt; &lt;example@email&gt; &lt;N&gt; &lt;Ben&gt; &lt;Corey&gt; \
-> This is an example string I’ll receive as input \
-> I’ll be working with a list of these strings in a csv \
-> First thing I’d need to do, is create a csv for each salesman \
-> So I have every sale Corey has made for example \
-> Next I’ll need to run some equations to calculate the commission per sale \
-> For example, Corey has a base 5% commission \
-> But since Corey AND Ben made the sale
-> Corey’s commission is split in 2 \
+Since commissions are calculated in U.S. dollars, you need to use the current
+conversion factor from the currency (BTC, ETH, GBP, etc.) to USD.
 
-Special case: Commission for HU2 is always 50%
+2. Create a directory for this month's sales records
 
-Testing
+It's easiest to give each month its own directory as we will be splitting
+into multiple files, one per seller
 
-1. Install pytest
+3. Calculate the commission for each seller
 
-2. Add script directory to PYTHONPATH
+cd <newfolder>
+../sales.py <salesdata.csv> ../currency/currency.csv <results.csv>
 
-3. Run pytest (no arguments)
+Totals for each seller will be shown on the screen.
+
+Detailed sales results are in <results.csv>
+
+4. (Optional) Split the sales into per-seller files
+
+cd <newfolder>
+../splitsales <salesdata.csv>
