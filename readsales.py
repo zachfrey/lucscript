@@ -27,14 +27,19 @@ def parse_sale(sale, line_num):
     search_results = re.finditer(r'\<.*?\>', sale)
     sale_record["line_number"] = line_num
     sale_record["product"] = next(search_results).group().strip('<>')
-    sale_record["price"] = float(next(search_results).group().strip('<>'))
+    try:
+        price = next(search_results).group().strip('<>')
+        sale_record["price"] = float(price)
+    except:
+        print(f"Line {line_num}: Error reading price '{price}'")
+        sale_record["price"] = 0.0
     sale_record["currency"] = next(search_results).group().strip('<>')
     sale_record["email"] = next(search_results).group().strip('<>')
     sale_record["seller"] = []
     while True:
         try:
             seller = {}
-            seller["bonus"] = next(search_results).group().strip('<>')
+            seller["bonus"] = next(search_results).group().strip('<>').strip()
             seller["name"] = next(search_results).group().strip('<>').strip()
             sale_record["seller"].append(seller)
         except StopIteration:
@@ -50,7 +55,11 @@ def parse_sales_list(sales, line_num):
     for sale in sale_records:
         sale_tokens = sale.strip().split()
         if len(sale_tokens) == 0:
-            # blank line, skip
+            # whitespace, skip
+            continue
+        elif len(sale_tokens) < 6:
+            # invalid line, skip
+            print(f"Line {line_num}: invalid: '{sale.strip()}'")
             continue
         sales_list.append(parse_sale(sale, line_num))
     return sales_list

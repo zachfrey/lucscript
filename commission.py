@@ -72,6 +72,9 @@ def calculate_commissions2(sales, currencies, sales_types):
         sellers = sale["seller"]
         num_sellers = len(sellers)
         line_number = sale["line_number"]
+        if num_sellers == 0:
+            print(f"Line {line_number}: no sellers found, cannot calculate commission")
+            continue
         # Convert currency to uppercase so that case won't matter
         # Strip leading and trailing whitespace, too
         currency = sale["currency"].strip().upper()
