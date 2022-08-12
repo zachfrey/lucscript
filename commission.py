@@ -6,8 +6,8 @@ import csv
 # SG = Self generated = 10%
 # E  = Eli = 7%
 
-bonus_keys = ["N", "SG", "E"]
-bonus_values = [0.05, 0.10, 0.07]
+bonus_keys = ["N", "SG", "E", "Y"]
+bonus_values = [0.05, 0.10, 0.07, 0.05]
 bonus_rates = dict(zip(bonus_keys, bonus_values))
 
 
