@@ -21,7 +21,7 @@ def split_sales(line):
 
 # Parse a single sales record into a Dictionary
 def parse_sale(sale, line_num):
-    sale_tokens = sale.split()
+
     # TODO: nicer error handling
     sale_record = {}
     search_results = re.finditer(r'\<.*?\>', sale)
@@ -46,6 +46,11 @@ def parse_sale(sale, line_num):
 def parse_sales_list(sales, line_num):
     sales_list = []
     sale_records = split_sales(sales)
+
     for sale in sale_records:
+        sale_tokens = sale.strip().split()
+        if len(sale_tokens) == 0:
+            # blank line, skip
+            continue
         sales_list.append(parse_sale(sale, line_num))
     return sales_list
