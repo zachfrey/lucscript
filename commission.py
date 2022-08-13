@@ -36,8 +36,10 @@ def calculate_commissions(sales, currencies, sales_types):
         currency = sale["currency"].strip().upper()
         price = sale["price"] / num_sellers
         if currency not in currencies:
-            raise Exception(f"Line {line_number}: No currency conversion found for '{currency}'")
-        price2 = price * float(currencies[currency])
+            print(f"Line {line_number}: No currency conversion found for '{currency}'")
+            price2 = 0.0
+        else:
+            price2 = price * float(currencies[currency])
 
         # Special case: commission for HU2 is always 50%
 
@@ -75,13 +77,16 @@ def calculate_commissions2(sales, currencies, sales_types):
         if num_sellers == 0:
             print(f"Line {line_number}: no sellers found, cannot calculate commission")
             continue
+        price = sale["price"] / num_sellers
+
         # Convert currency to uppercase so that case won't matter
         # Strip leading and trailing whitespace, too
         currency = sale["currency"].strip().upper()
-        price = sale["price"] / num_sellers
         if currency not in currencies:
-            raise Exception(f"Line {line_number}: No currency conversion found for '{currency}'")
-        price2 = price * float(currencies[currency])
+            print(f"Line {line_number}: No currency conversion found for '{currency}'")
+            price2 = 0.0
+        else:
+            price2 = price * float(currencies[currency])
 
         for seller in sellers:
             newsale = dict()
@@ -104,7 +109,10 @@ def calculate_commissions2(sales, currencies, sales_types):
             newsale["Customer"] = sale["email"]
             newsale["Bonus"] = sale_type
             newsale["Splits"] = num_sellers
-            newsale["Conversion"] = float(currencies[currency])
+            if currency in currencies:
+                newsale["Conversion"] = float(currencies[currency])
+            else:
+                newsale["Conversion"] = 0.0
             newsale["Commission"] = commission
             sale_list.append(newsale)
 

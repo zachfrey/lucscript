@@ -22,7 +22,8 @@ def split_sales(line):
 # Parse a single sales record into a Dictionary
 def parse_sale(sale, line_num):
 
-    # TODO: nicer error handling
+    print(f"{line_num}: {sale}")
+
     sale_record = {}
     search_results = re.finditer(r'\<.*?\>', sale)
     sale_record["line_number"] = line_num
@@ -30,7 +31,7 @@ def parse_sale(sale, line_num):
     try:
         price = next(search_results).group().strip('<>')
         sale_record["price"] = float(price)
-    except:
+    except Exception as ex:
         print(f"Line {line_num}: Error reading price '{price}'")
         sale_record["price"] = 0.0
     sale_record["currency"] = next(search_results).group().strip('<>')
