@@ -40,8 +40,8 @@ def parse_sale(sale, line_num):
     while True:
         try:
             seller = {}
-            seller["bonus"] = next(search_results).group().strip('<>').strip()
-            seller["name"] = next(search_results).group().strip('<>').strip()
+            seller["bonus"] = next(search_results).group().strip('<>').strip().upper()
+            seller["name"] = next(search_results).group().strip('<>').strip().upper()
             sale_record["seller"].append(seller)
         except StopIteration:
             break
